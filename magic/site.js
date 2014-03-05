@@ -29,32 +29,6 @@ document.createElement("menu");
 document.createElement("tooltip");
 document.createElement("article");
 
-// Disable Pointer Events on Scroll
-// -> Actually made my site slower!
-// -@ http://www.thecssninja.com/javascript/pointer-events-60fps
-// var body = document.body,
-//     timer;
-// 
-// window.addEventListener('scroll', function() {
-//   clearTimeout(timer);
-//   if(!body.classList.contains('disable-hover')) {
-//     body.classList.add('disable-hover')
-//   }
-//   
-//   timer = setTimeout(function(){
-//     body.classList.remove('disable-hover')
-//   },100);
-// }, false);
-
-// jQuery User Settings
-// -> Toggles Menus
-// -@ http://stackoverflow.com/questions/14106651/jquery-toggle-element-based-on-click-of-another-div
-$('.toggler').click(function(){
-    "use strict";
-    var elt = $(this).attr('for');
-    $("#" + elt).toggle();
-});
-
 // Visibility Classes
 // -> A small plugin that checks whether elements are within
 //    the user visible viewport of a web browser.
@@ -210,11 +184,6 @@ $('label').click(function() {
        $('#'+labelID).trigger('click');
 });
 
-// Search
-// $("#search").click(function(){
-//   $.getScript("find2.js");
-// });
-
 // Menu Open/Close
 $(document).ready(function(){
     $('[data-toggle^="menu"]').click(function(){
@@ -289,8 +258,10 @@ function blast(obj) {
 }
 
 // Random Name Picker
+// -> Whatever you do, please don't use this as an OC name generator.
+//    I'm sure that you can come up with better ideas than these!
 $(document).ready(function(){
-    var firstNameArray = ['Almond', 'Apricot', 'Aquamarine', 'Asparagus',
+    var firstNameArray = ['Almond', 'Apricot', 'Puffy', 'Asparagus',
                       'Bittersweet', 'Blizzard', 'Cadet', 'Carnation',
                       'Chartreuse', 'Chestnut', 'Snow'];
     var firstName = firstNameArray[Math.floor(Math.random() * firstNameArray.length)];
@@ -301,8 +272,9 @@ $(document).ready(function(){
                        'Whooves', 'Starlight'];
     var lastName = lastNameArray[Math.floor(Math.random() * lastNameArray.length)];
     document.querySelector("span.lastname").textContent = lastName;
-    document.getElementById("google").setAttribute("href", "http://lmgtfy.com/?q=" firstName + lastName);
+    document.getElementById("google").setAttribute("href", "http://lmgtfy.com/?q=" + lastName);
 });
+
 
 // Smooth Scrolling
 // -> It's pretty awesome.
@@ -352,87 +324,8 @@ $(window).focus(function() {
 // -> Winter wrap-up planned for March.
 //    Minification breaks it!
 // -@ http://thecodeplayer.com/walkthrough/html5-canvas-snow-effect
-window.onload = function(){
-    //canvas init
-    var canvas = document.getElementById("snow");
-    var ctx = canvas.getContext("2d");
-    //canvas dimensions
-    var W = window.innerWidth;
-    var H = window.innerHeight;
-    canvas.width = W;
-    canvas.height = H;
-    //snowflake particles
-    var mp = 25; //max particles
-    var particles = [];
-    for(var i = 0; i < mp; i++)
-    {
-        particles.push({
-            x: Math.random()*W, //x-coordinate
-            y: Math.random()*H, //y-coordinate
-            r: Math.random()*4+1, //radius
-            d: Math.random()*mp //density
-        })
-    }
-    //Lets draw the flakes
-    function draw()
-    {
-        ctx.clearRect(0, 0, W, H);
 
-        ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
-        ctx.beginPath();
-        for(var i = 0; i < mp; i++)
-        {
-            var p = particles[i];
-            ctx.moveTo(p.x, p.y);
-            ctx.arc(p.x, p.y, p.r, 0, Math.PI*2, true);
-        }
-        ctx.fill();
-        update();
-    }
-    //Function to move the snowflakes
-    //angle will be an ongoing incremental flag. Sin and Cos functions will be applied to it to create vertical and horizontal movements of the flakes
-    var angle = 0;
-    function update()
-    {
-        angle += 0.01;
-        for(var i = 0; i < mp; i++)
-        {
-            var p = particles[i];
-            //Updating X and Y coordinates
-            //We will add 1 to the cos function to prevent negative values which will lead flakes to move upwards
-            //Every particle has its own density which can be used to make the downward movement different for each flake
-            //Lets make it more random by adding in the radius
-            p.y += Math.cos(angle+p.d) + 1 + p.r/2;
-            p.x += Math.sin(angle) * 2;
-
-            //Sending flakes back from the top when it exits
-            //Lets make it a bit more organic and let flakes enter from the left and right also.
-            if(p.x > W || p.x < 0 || p.y > H)
-            {
-                if(i%3 > 0) //66.67% of the flakes
-                {
-                    particles[i] = {x: Math.random()*W, y: -10, r: p.r, d: p.d};
-                }
-                else
-                {
-                    //If the flake is exitting from the right
-                    if(Math.sin(angle) > 0)
-                    {
-                        //Enter fromth
-                        particles[i] = {x: -5, y: Math.random()*H, r: p.r, d: p.d};
-                    }
-                    else
-                    {
-                        //Enter from the right
-                        particles[i] = {x: W+5, y: Math.random()*H, r: p.r, d: p.d};
-                    }
-                }
-            }
-        }
-    }
-    //animation loop
-    setInterval(draw, 33);
-}
+// REMOVED
 
 // Konami.js v1.4.2
 // -> Works on iPhone, too!
