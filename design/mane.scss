@@ -1,0 +1,150 @@
+@import "compass/_reset.scss";
+@import "includes/_vars.scss";
+@import "includes/_colors.scss";
+@import "colors/_rainbowdash.scss";
+$swatch: $rd-blue;
+
+@import "includes/_base.scss";
+@import "includes/_type.scss";
+@import "includes/_bronicons.scss";
+@import "../fonts/proxima-soft/font.css";
+@import "../fonts/celestia/font.css";
+
+@import "grid/_precompiled.scss";
+
+@import "includes/_scrollbars.scss";
+@import "includes/_animations.scss";
+@import "includes/_forms.scss";
+@import "includes/_buttons.scss";
+@import "includes/_prettyprint-monokai.scss";
+@import "includes/_modal.scss";
+@import "includes/_longshadows.scss";
+@import "includes/_nav.scss";
+@import "includes/_tooltips.scss";
+
+// Custom Styles
+body {
+  box-shadow: 0 0 20px black;
+  // background: $blue;
+  // color: white;
+  font-size: 18px;
+  font-family: $proximasoft;
+  background: $dark;
+  color: black;
+  line-height: 1.7em;
+}
+
+h1, h2, h3, h4, h5, .btn, .nav {
+  font-family: $proximasoft;
+  font-weight: 500;
+  text-align: center;
+}
+
+.logo {
+  font-family: $celestia;
+}
+
+header, section, footer {
+  position: relatve; width: 100%; overflow: hidden;
+  padding: 20px;
+  background-color: white;
+  background-size: cover;
+  background-position: middle;
+}
+
+a {
+  display: inline-block;
+}
+
+.underline {
+  border-bottom: 1px dotted;
+  border-radius: 0px;
+  &:hover {
+    border-bottom: 1px solid;
+  }
+}
+
+.transition {
+  transition: all .25s ease;
+  -webkit-transition: all .25s ease;
+}
+
+.button {
+  @extend .button-large;
+  border-radius: 6px;
+  margin-right: 0.2em;
+}
+
+.dark-text-shadow {
+  text-shadow: rgba(41, 52, 63, 0.4) 0px -1px 0px;
+}
+
+// Loading
+progress[data-status='empty'] { display: none; }
+progress[data-status='loading'] { display: block; }
+progress[data-status='done'] { display: none; }
+
+header {
+  text-align: center;
+  padding: 130px 0 80px 0;
+}
+
+#placeholder {
+  color: white;
+  background: $rd-blue;
+}
+
+// Sections
+
+// Blog Overview
+ul.posts {
+  li {
+    background: white;
+    box-shadow: 0 0 2px black;
+    margin: 0;
+    padding: 10px;
+  }
+  a.title {
+    display: block;
+    font-size: 24px;
+  }
+  .meta {
+    color: $gray;
+    a {
+      color: $gray;
+    }
+  }
+}
+
+// Articles
+article.post {
+  p {
+    margin: 0 auto 30px auto;
+    max-width: 800px;
+  }
+}
+
+// Footer
+footer {
+  background-color: $dark;
+  color: white;
+  a {
+    color: white;
+  }
+  .right a {
+    @include button-border(white);
+    &:hover {
+      color: $dark;
+    }
+  }
+}
+
+@media screen and (max-width: $mobile) {
+  footer .right {
+    float: none!important;
+    a {
+      margin-top: 20px;
+      display: block;
+    }
+  }
+}
