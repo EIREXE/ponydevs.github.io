@@ -10,24 +10,24 @@ color: white
     <p>It fills our heart with sunshine when you smile smile smile.</p>
   </div>
 </header>
-<section id="sites">
+<section id="projects">
   <div class="container">
-    <h1>Sites &amp; Apps</h1>
+    <h1>Projects</h1>
   </div>
 </section>
 <section id="people">
   <div class="container">
-    <h1>Meet the People</h1>
+    <h1>Meet the Ponies</h1>
   </div>
 </section>
 <section id="home">
   <div class="container">
     <h1>From the Blog</h1>
     <ul class="posts">
-      {% for post in site.posts %}
+      {% for post in site.categories['blog'] %}
         <li>
           <a href="{{ post.url }}" class="title">{{ post.title }}</a>
-          <div class="meta">{% if post.author %} <i class="icon-board"><span class="screen-reader">written</span></i> by <a href="/person/{{ post.author }}">{{ post.author }}</a>{% endif %} <i class="icon-event"><span class="screen-reader">posted</span></i> on <span>{{ post.date | date_to_string }}</span></div>
+          <div class="meta">{% if post.author %} <i class="icon-board"><span class="screen-reader">written</span></i> by <a href="/pony/{{ post.author }}">{{ post.author }}</a>{% endif %} <i class="icon-event"><span class="screen-reader">posted</span></i> on <span>{{ post.date | date_to_string }}</span></div>
         </li>
       {% endfor %}
     </ul>
