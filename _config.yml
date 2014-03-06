@@ -8,5 +8,6 @@ pygments:       true
 name:           PonyDevs
 description:    "We ship ponies."
 url:            http://ponydevs.com
+permalink:      /:categories/:title
 gems:
   - jekyll-redirect-from
