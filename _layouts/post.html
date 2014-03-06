@@ -3,15 +3,15 @@
 
 {% include head.html %}
 
-<body class="page">
+<body class="post">
 
 {% include navigation.html %}
 
-<header class="{% if page.cover %}cover{% endif %}" style="{% if page.cover %}background-image:url({{ page.cover }});{% endif %}">
-  <div class="{% if page.cover %}container skrollable" data-0="opacity: 1" data-300="opacity:0.22{% endif %}">
+<header class="{% if page.cover %}cover skrollable{% endif %}" {% if page.cover %} data-0="background-position: 50% 0%" data-300="background-position: 50% 100%" {% endif %} style="{% if page.cover %}background-image:url({{ page.cover }});{% endif %}">
+  <div class="container {% if page.cover %}skrollable{% endif %}" {% if page.cover %} data-0="opacity: 1" data-300="opacity:0.22" {% endif %}>
     <h1>{{ page.title }}</h1>
-    <a href="{{ post.url }}" class="title">{{ page.title }}</a>
     <div class="meta">{% if page.author %} <i class="icon-board"><span class="screen-reader">written</span></i> by <a href="/pony/{{ page.author }}">{{ page.author }}</a>{% endif %} <i class="icon-event"><span class="screen-reader">posted</span></i> on <span>{{ page.date | date_to_string }}</span></div>
+    <a href="#content" class="down"><i class="icon-down"></i></a>  
   </div>
 </header>
 <section id="content">
