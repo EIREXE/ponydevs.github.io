@@ -50,6 +50,7 @@ header, section, footer {
   background-color: white;
   background-size: cover;
   background-position: middle;
+  min-height: 50px!important;
 }
 
 a {
@@ -87,6 +88,13 @@ progress[data-status='done'] { display: none; }
 header {
   text-align: center;
   padding: 130px 0 80px 0;
+  &.cover {
+    color: white;
+    a {
+      color: white;
+      @extend .underline;
+    }
+  }
 }
 
 #placeholder {

@@ -95,7 +95,6 @@ a {
   border-radius: 4px; }
 
 section, header, footer {
-  min-height: 100%;
   position: relative; }
 
 .screen-reader {
@@ -3247,15 +3246,16 @@ header, section, footer {
   padding: 20px;
   background-color: white;
   background-size: cover;
-  background-position: middle; }
+  background-position: middle;
+  min-height: 50px !important; }
 
 a {
   display: inline-block; }
 
-.underline {
+.underline, header.cover a {
   border-bottom: 1px dotted;
   border-radius: 0px; }
-  .underline:hover {
+  .underline:hover, header.cover a:hover {
     border-bottom: 1px solid; }
 
 .transition, ::-webkit-scrollbar-thumb {
@@ -3281,6 +3281,10 @@ progress[data-status='done'] {
 header {
   text-align: center;
   padding: 130px 0 80px 0; }
+  header.cover {
+    color: white; }
+    header.cover a {
+      color: white; }
 
 #placeholder {
   color: white;
